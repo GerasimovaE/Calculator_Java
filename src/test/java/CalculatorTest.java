@@ -29,16 +29,40 @@ class CalculatorTest {
     @Test
     public void simpleRoman() {
 
-        calc.calculateMain("Ⅰ + Ⅶ");
-        Assert.assertEquals("Ⅷ", outputStreamCaptor.toString().trim());
+        calc.calculateMain("I + VII");
+        Assert.assertEquals("VIII", outputStreamCaptor.toString().trim());
+
+    }
+
+    @Test
+    public void bigRoman() {
+
+        calc.calculateMain("X + VII");
+        Assert.assertEquals("XVII", outputStreamCaptor.toString().trim());
+
+    }
+
+    @Test
+    public void multiplicationRoman() {
+
+        calc.calculateMain("X * VII");
+        Assert.assertEquals("LXX", outputStreamCaptor.toString().trim());
+
+    }
+
+    @Test
+    public void divRoman() {
+
+        calc.calculateMain("X / II");
+        Assert.assertEquals("V", outputStreamCaptor.toString().trim());
 
     }
 
     @Test
     public void incorrectRoman() {
 
-        calc.calculateMain("ⅨⅨⅨ + Ⅶ");
-        Assert.assertEquals("ⅨⅨⅨ cannot be converted to a Roman", outputStreamCaptor.toString().trim());
+        calc.calculateMain("IXIXIX + VII");
+        Assert.assertEquals("IXIXIX cannot be converted to a Roman", outputStreamCaptor.toString().trim());
 
     }
 
@@ -53,8 +77,8 @@ class CalculatorTest {
     @Test
     public void simpleRoman_exceeding_the_limit() {
 
-        calc.calculateMain("ⅩⅠ + Ⅴ");
-        Assert.assertEquals("ⅩⅠ cannot be converted to a Roman", outputStreamCaptor.toString().trim());
+        calc.calculateMain("XI + V");
+        Assert.assertEquals("XI cannot be converted to a Roman", outputStreamCaptor.toString().trim());
 
     }
 
@@ -69,7 +93,7 @@ class CalculatorTest {
     @Test
     public void mix_Arabic_Roman() {
 
-        calc.calculateMain("Ⅳ + 1");
+        calc.calculateMain("IX + 1");
         Assert.assertEquals("The input format is not correct. Check the input data.", outputStreamCaptor.toString().trim());
 
     }

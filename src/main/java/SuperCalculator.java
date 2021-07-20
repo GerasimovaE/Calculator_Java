@@ -42,7 +42,7 @@ public class SuperCalculator {
 
     private void parseString(String s) throws CalculatorExeption {
 
-        if (checkString(s, "[ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩ]* [-,+,*,/]? [ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩ]*")) {
+        if (checkString(s, "[IVX]* [-,+,*,/]? [IVX]*")) {
             isRoman = true;
         }else if (!checkString(s, "[0123456789]* [-,+,*,/]? [0123456789]*")){
             throw new CalculatorExeption("The input format is not correct. Check the input data.");
